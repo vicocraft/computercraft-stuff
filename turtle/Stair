@@ -1,0 +1,25 @@
+--use with computercraft.
+term.clear()
+term.setCursorPos(1,1)
+print("StairDigger 2014 (C) Nukes2all")
+print("How Many Levels Is Your Destination?")
+print("Enter Numbers Only Please")
+x = 0
+x = tonumber(read())
+function createStairs()
+  turtle.dig()
+  turtle.digUp()
+  turtle.dig()
+  turtle.forward()
+  turtle.digUp()
+  turtle.up()
+  turtle.digUp()
+  turtle.down()
+  turtle.digDown()
+  turtle.digUp()
+  turtle.down()
+end
+while x > 0 do
+  createStairs()
+  x = x - 1
+end
