@@ -3,7 +3,7 @@
 
 local tArgs = {...}
 
-if not fs.exists("/lib/adt") or fs.isDir("/lib/adt") then
+if not fs.exists("/lib/adt.lua") or fs.isDir("/lib/adt.lua") then
     local url = "http://turtlescripts.com/downloadScript.php?id="
     local vmap = {}
     vmap["CraftOS 1.3"] = "gjdh1v"
@@ -12,14 +12,14 @@ if not fs.exists("/lib/adt") or fs.isDir("/lib/adt") then
     vmap["TurtleOS 1.3"] = "gjdh1v"
     vmap["TurtleOS 1.4"] = "gjdh1u"
     
-    print "/lib/adt not found, trying to download it.\n"
+    print "/lib/adt.lua not found, trying to download it.\n"
     local response = http.get( url .. vmap[os.version()] )
     if response then
         print "Download successful.\n"
         local sResponse = response.readAll()
         response.close()
         fs.makeDir("lib")
-        local file = fs.open("/lib/adt", "w")
+        local file = fs.open("/lib/adt.lua", "w")
         file.write(sResponse)
         file.close()
     else
@@ -30,7 +30,7 @@ if not fs.exists("/lib/adt") or fs.isDir("/lib/adt") then
     end
 end 
 
-os.loadAPI("/lib/adt")
+os.loadAPI("/lib/adt.lua")
  
 function buildSlice(sWidth, sBorder)
   if sWidth==nil then
